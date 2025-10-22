@@ -159,7 +159,9 @@ const pricingPlans = [
 ];
 
 export default function Services() {
-  const [serviceClicked, setServiceClicked] = useState<string | null>("Desarrollo web");
+  const [serviceClicked, setServiceClicked] = useState<string | null>(
+    "Desarrollo web"
+  );
   const [selectedServicePlan, setSelectedServicePlan] = useState<string | null>(
     "Infraestructura"
   );
@@ -220,7 +222,7 @@ export default function Services() {
                           Beneficios
                         </h4>
                         <ul className="list-disc list-inside space-y-1 text-neutral-400">
-                          {service.benefits.map((item: any, i: any) => (
+                          {service.benefits.map((item, i) => (
                             <li key={i}>{item}</li>
                           ))}
                         </ul>
