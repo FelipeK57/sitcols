@@ -162,9 +162,7 @@ const pricingPlans = [
 ];
 
 export default function Services() {
-  const [serviceClicked, setServiceClicked] = useState<string | null>(
-    "Desarrollo web"
-  );
+  const [serviceClicked, setServiceClicked] = useState<string | null>(null);
   const [selectedServicePlan, setSelectedServicePlan] = useState<string | null>(
     "Infraestructura"
   );
