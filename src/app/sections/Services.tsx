@@ -100,7 +100,7 @@ const pricingPlans = [
         price: "$20/mes",
         features: [
           "Servidor VPS básico",
-          "Certificado SSL gratuito",
+          "Configuración de dominio y SSL",
           "Aloja unicamente sitios web estáticos",
           "Ideal para aplicaciones web con bajo tráfico",
         ],
@@ -110,6 +110,7 @@ const pricingPlans = [
         price: "$25/mes",
         features: [
           "Servidor VPS estándar",
+          "Configuración de dominio y SSL",
           "Aloja aplicaciones web ligeras y bases de datos medianas",
           "Ideal para aplicaciones web con tráfico moderado",
         ],
@@ -119,6 +120,7 @@ const pricingPlans = [
         price: "$45/mes",
         features: [
           "Servidor VPS premium",
+          "Configuración de dominio y SSL",
           "Aloja aplicaciones web complejas y bases de datos grandes",
           "Ideal para aplicaciones web con alta demanda y tráfico intenso",
         ],
@@ -297,10 +299,7 @@ export default function Services() {
         {pricingPlans
           .filter((plan) => plan.title === selectedServicePlan)
           .map((plan, index) => (
-            <div
-              key={index}
-              className={`grid md:grid-cols-3 gap-4 mt-8`}
-            >
+            <div key={index} className={`grid md:grid-cols-3 gap-4 mt-8`}>
               {plan.plan.map((p, i) => (
                 <div
                   key={i}
