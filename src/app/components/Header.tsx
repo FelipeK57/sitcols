@@ -38,7 +38,7 @@ export default function Header() {
             Nosotros
           </a>
         </nav>
-        <button className="bg-primary px-4 py-2 rounded-4xl hover:bg-primary/80 transition-all active:scale-95 cursor-pointer">
+        <button className="btn-primary">
           Solicitar llamada
         </button>
       </div>

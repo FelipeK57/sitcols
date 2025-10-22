@@ -24,5 +24,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Manrope Variable', Arial, Helvetica, sans-serif;
+  font-family: "Manrope Variable", Arial, Helvetica, sans-serif;
+}
+
+.btn-primary {
+  @apply bg-primary font-medium py-2 px-4 rounded-full hover:bg-primary/90 transition-all active:scale-95 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100 disabled:hover:bg-primary;
+}
+
+.btn-secondary {
+  @apply border border-foreground font-medium py-2 px-4 rounded-full hover:bg-foreground/5 transition-all active:scale-95 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100 disabled:hover:bg-foreground/5;
 }

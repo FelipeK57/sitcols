@@ -42,10 +42,10 @@ export default function Hero() {
           para tu negocio.
         </p>
         <div className="flex justify-center w-fit mx-auto gap-4">
-          <button className="border border-foreground px-4 py-2 rounded-4xl hover:bg-foreground/5 transition-all active:scale-95 cursor-pointer">
+          <button className="btn-secondary">
             Ver proyectos
           </button>
-          <button className="bg-primary px-4 py-2 rounded-4xl hover:bg-primary/80 transition-all active:scale-95 cursor-pointer">
+          <button className="btn-primary">
             Contáctanos
           </button>
         </div>
@@ -58,7 +58,7 @@ export default function Hero() {
           loop
           playsInline
           preload="none"
-          className="rounded shadow w-full max-w-6xl"
+          className="rounded shadow w-full max-w-5xl"
           onPlay={(e) => e.currentTarget.classList.add("opacity-100")}
           onPause={(e) => e.currentTarget.classList.remove("opacity-100")}
         />
