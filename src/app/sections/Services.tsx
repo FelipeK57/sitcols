@@ -97,29 +97,30 @@ const pricingPlans = [
     plan: [
       {
         name: "Starter",
-        price: "$30/mes",
+        price: "$20/mes",
         features: [
           "Servidor VPS básico",
+          "Certificado SSL gratuito",
           "Aloja unicamente sitios web estáticos",
-          "Ideal para landing pages",
+          "Ideal para aplicaciones web con bajo tráfico",
         ],
       },
       {
         name: "Business",
-        price: "$50/mes",
+        price: "$25/mes",
         features: [
           "Servidor VPS estándar",
           "Aloja aplicaciones web ligeras y bases de datos medianas",
-          "Ideal para CRM/ERP básicos, e-commerce pequeños o booking systems administrativos",
+          "Ideal para aplicaciones web con tráfico moderado",
         ],
       },
       {
         name: "Enterprise",
-        price: "$80/mes",
+        price: "$45/mes",
         features: [
           "Servidor VPS premium",
           "Aloja aplicaciones web complejas y bases de datos grandes",
-          "Ideal para e-commerce con alto tráfico, CRM/ERP avanzados o booking systems con publicos",
+          "Ideal para aplicaciones web con alta demanda y tráfico intenso",
         ],
       },
     ],
@@ -298,39 +299,37 @@ export default function Services() {
           .map((plan, index) => (
             <div
               key={index}
-              className={`grid ${
-                plan.title === "Desarrollo web"
-                  ? "md:grid-cols-3 xl:grid-cols-5"
-                  : "md:grid-cols-3"
-              } gap-6 mt-8`}
+              className={`grid md:grid-cols-3 gap-4 mt-8`}
             >
               {plan.plan.map((p, i) => (
                 <div
                   key={i}
-                  className={`flex flex-col gap-4 mt-auto h-96 bg-neutral-900 border ${
+                  className={`flex flex-col gap-4 mt-auto bg-neutral-900 border ${
                     i == 1
-                      ? "border-primary border-3 md:scale-105"
-                      : "border-neutral-800 md:scale-90"
+                      ? "border-primary border-3 md:scale-105 min-h-96"
+                      : "border-neutral-800 md:scale-90 h-full max-h-96"
                   } rounded-2xl p-6`}
                 >
                   <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold">{p.name}</h3>
-                    <div>
+                    <h3 className="text-base font-semibold">{p.name}</h3>
+                    <div className="flex items-center">
                       {i == 1 && (
-                        <span className="text-sm rounded-2xl bg-primary px-4 py-1 font-medium">
+                        <span className="text-sm rounded-2xl bg-primary/20 text-primary px-4 py-1 font-semibold">
                           Popular
                         </span>
                       )}
                     </div>
                   </div>
-                  <span className="text-4xl font-bold">{p.price}</span>
-                  <button className="btn-primary w-full">
+                  <span className="text-3xl xl:text-4xl font-bold">
+                    {p.price}
+                  </span>
+                  <button className="btn-primary text-sm w-full">
                     Seleccionar plan
                   </button>
                   <div className="space-y-4 text-neutral-400">
                     {p.features.map((feature: any, j: any) => (
                       <div className="flex items-center gap-2 text-sm" key={j}>
-                        <CheckCircle className="stroke-3 text-primary" />
+                        <CheckCircle className="size-5 text-primary" />
                         <span className="w-full">{feature}</span>
                       </div>
                     ))}

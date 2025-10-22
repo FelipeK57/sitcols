@@ -50,7 +50,8 @@ export default function Hero() {
           </button>
         </div>
       </section>
-      <section className="flex justify-center py-20 px-4">
+      <section className="flex flex-col items-center gap-6 justify-center py-20 px-4">
+        <p className="font-semibold text-center">Desarrollamos tu visión en código.</p>
         <video
           ref={videoRef}
           src="/gif_sitcols.mp4"
