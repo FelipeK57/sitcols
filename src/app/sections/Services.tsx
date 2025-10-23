@@ -93,31 +93,43 @@ const webDevelopmentServices = [
     title: "Landing pages",
     description:
       "Páginas web diseñadas para captar la atención y convertir visitantes en clientes.",
+    minPrice: "$1.000.000",
+    estimatedTime: "2-4 semanas",
   },
   {
     title: "Sistemas CRM",
     description:
       "Plataformas personalizadas para gestionar relaciones con clientes y recursos empresariales.",
-  },
-  {
-    title: "Sistemas ERP",
-    description:
-      "Soluciones integrales para la gestión de procesos empresariales y recursos internos.",
+    minPrice: "$1.600.000",
+    estimatedTime: "4-6 semanas",
   },
   {
     title: "E-commerce",
     description:
       "Tiendas online optimizadas para ofrecer una experiencia de compra fluida y segura.",
+    minPrice: "$2.200.000",
+    estimatedTime: "6-8 semanas",
   },
   {
     title: "Sistemas de reservas",
     description:
       "Plataformas para gestionar reservas y citas de manera eficiente.",
+    minPrice: "$2.800.000",
+    estimatedTime: "8-10 semanas",
+  },
+  {
+    title: "Sistemas ERP",
+    description:
+      "Soluciones integrales para la gestión de procesos empresariales y recursos internos.",
+    minPrice: "$3.400.000",
+    estimatedTime: "10-12 semanas",
   },
   {
     title: "Aplicaciones web a medida",
     description:
       "Soluciones personalizadas adaptadas a las necesidades específicas de tu negocio.",
+    minPrice: "Desde $5.000.000",
+    estimatedTime: "Variable según requerimientos",
   },
 ];
 const designServices = [
@@ -125,12 +137,16 @@ const designServices = [
     title: "Diseño UI/UX básico",
     description:
       "Diseño de interfaces simples para landing pages o aplicaciones con funcionalidades limitadas.",
+    minPrice: "$800.000",
+    estimatedTime: "2-3 semanas",
   },
   {
     title: "Diseño UI/UX avanzado",
     description:
       "Diseño completo de interfaces para aplicaciones complejas con múltiples funcionalidades e interacciones.",
-  }
+    minPrice: "$1.600.000",
+    estimatedTime: "4-6 semanas",
+  },
 ];
 
 const servicesWithPlans = ["Infraestructura", "Mantenimiento"];
@@ -142,27 +158,27 @@ const pricingPlans = [
     plan: [
       {
         name: "Starter",
-        price: "$20/mes",
+        price: "$79.900/mes",
         features: [
           "Servidor VPS básico",
           "Configuración de dominio y SSL",
-          "Aloja unicamente sitios web estáticos",
+          "Aloja aplicaciones web simples y bases de datos pequeñas",
           "Ideal para aplicaciones web con bajo tráfico",
         ],
       },
       {
         name: "Business",
-        price: "$25/mes",
+        price: "$99.900/mes",
         features: [
           "Servidor VPS estándar",
           "Configuración de dominio y SSL",
-          "Aloja aplicaciones web ligeras y bases de datos medianas",
+          "Aloja aplicaciones web medianas y bases de datos medianas",
           "Ideal para aplicaciones web con tráfico moderado",
         ],
       },
       {
         name: "Enterprise",
-        price: "$45/mes",
+        price: "$179.000/mes",
         features: [
           "Servidor VPS premium",
           "Configuración de dominio y SSL",
@@ -177,7 +193,7 @@ const pricingPlans = [
     plan: [
       {
         name: "Starter",
-        price: "$20/mes",
+        price: "$79.900/mes",
         features: [
           "Actualizaciones mensuales",
           "Backups semanales",
@@ -186,7 +202,7 @@ const pricingPlans = [
       },
       {
         name: "Business",
-        price: "$50/mes",
+        price: "$199.900/mes",
         features: [
           "Básico +",
           "Soporte por email y chat",
@@ -195,7 +211,7 @@ const pricingPlans = [
       },
       {
         name: "Premium",
-        price: "$100/mes",
+        price: "$399.000/mes",
         features: [
           "Business +",
           "Soporte 24/7",
@@ -219,10 +235,17 @@ export default function Services() {
 
   return (
     <>
-      <section id="servicios" className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6 ">
+      <section
+        id="servicios"
+        className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6 "
+      >
         <h2 className="font-semibold tracking-tight text-4xl text-center">
           Nuestros servicios
         </h2>
+        <p className="text-center max-w-xl mx-auto text-neutral-400">
+          Basados en el ciclo de vida del software, ofrecemos servicios
+          personalizados para satisfacer las necesidades únicas de tu negocio.
+        </p>
         <div className="grid md:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceCard
@@ -300,6 +323,10 @@ export default function Services() {
         <h2 className="font-semibold tracking-tight text-2xl text-center">
           Soluciones a medida
         </h2>
+        <p className="text-center max-w-xl mx-auto text-neutral-400">
+          Nuestra especialidad es desarrollar soluciones personalizadas que se
+          adapten perfectamente a las necesidades de tu negocio.
+        </p>
         <div className="relative space-y-2 w-fit mx-auto">
           <div
             onClick={() => setIsSelectServiceOpen(!isSelectServiceOpen)}
@@ -348,10 +375,19 @@ export default function Services() {
             {webDevelopmentServices.map((service, index) => (
               <article
                 key={index}
-                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl"
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-2"
               >
                 <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
                 <p className="text-neutral-400">{service.description}</p>
+                <p className="text-lg font-semibold">
+                  Desde: {service.minPrice}
+                </p>
+                <p className="text-sm text-neutral-400">
+                  Tiempo estimado: {service.estimatedTime}
+                </p>
+                <button className="btn-primary text-sm">
+                  Solicitar cotización
+                </button>
               </article>
             ))}
           </div>
@@ -360,19 +396,39 @@ export default function Services() {
             {designServices.map((service, index) => (
               <article
                 key={index}
-                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl"
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-2"
               >
-                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                <h3 className="font-semibold text-lg">{service.title}</h3>
                 <p className="text-neutral-400">{service.description}</p>
+                <p className="text-lg font-semibold">
+                  Desde: {service.minPrice}
+                </p>
+                <p className="text-sm text-neutral-400">
+                  Tiempo estimado: {service.estimatedTime}
+                </p>
+                <button className="btn-primary text-sm">
+                  Solicitar cotización
+                </button>
               </article>
             ))}
           </div>
         )}
+        <p className="max-w-xl mx-auto text-xs text-neutral-400 text-center">
+          *Los precios y tiempos dependen de los requisitos y complejidad del
+          proyecto, son de pago unico y tienen distintas formas de pago.*
+        </p>
       </section>
-      <section id="planes" className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6">
+      <section
+        id="planes"
+        className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6"
+      >
         <h2 className="font-semibold tracking-tight text-2xl text-center">
           Planes y precios
         </h2>
+        <p className="text-center max-w-xl mx-auto text-neutral-400">
+          De la mano de nuestras soluciones a medida, te ofrecemos planes
+          flexibles que se adaptan a las necesidades específicas de tu negocio.
+        </p>
         <div className="relative space-y-2 w-fit mx-auto">
           <div
             onClick={() => setIsSelectOpen(!isSelectOpen)}
@@ -419,14 +475,14 @@ export default function Services() {
         {pricingPlans
           .filter((plan) => plan.title === selectedServicePlan)
           .map((plan, index) => (
-            <div key={index} className={`grid md:grid-cols-3 gap-4 mt-8`}>
+            <div key={index} className={`grid lg:grid-cols-3 gap-4 mt-8`}>
               {plan.plan.map((p, i) => (
                 <div
                   key={i}
                   className={`flex flex-col gap-4 mt-auto bg-neutral-900 border ${
                     i == 1
-                      ? "border-primary border-3 md:scale-105 min-h-96"
-                      : "border-neutral-800 md:scale-90 h-full max-h-96"
+                      ? "border-primary border-3 lg:scale-105 min-h-96"
+                      : "border-neutral-800 lg:scale-90 h-full max-h-96"
                   } rounded-2xl p-6`}
                 >
                   <div className="flex justify-between items-center">
