@@ -219,7 +219,7 @@ export default function Services() {
 
   return (
     <>
-      <section className="w-full max-w-6xl mx-auto py-16 px-4 space-y-6 ">
+      <section id="servicios" className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6 ">
         <h2 className="font-semibold tracking-tight text-4xl text-center">
           Nuestros servicios
         </h2>
@@ -296,7 +296,7 @@ export default function Services() {
           )}
         </AnimatePresence>
       </section>
-      <section className="w-full max-w-6xl mx-auto py-16 px-4 space-y-6">
+      <section className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6">
         <h2 className="font-semibold tracking-tight text-2xl text-center">
           Soluciones a medida
         </h2>
@@ -369,7 +369,7 @@ export default function Services() {
           </div>
         )}
       </section>
-      <section className="w-full max-w-6xl mx-auto py-16 px-4 space-y-6">
+      <section id="planes" className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6">
         <h2 className="font-semibold tracking-tight text-2xl text-center">
           Planes y precios
         </h2>

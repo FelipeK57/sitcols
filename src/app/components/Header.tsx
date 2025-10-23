@@ -1,5 +1,15 @@
+"use client";
 import Image from "next/image";
+import { useEffect } from "react";
 export default function Header() {
+  // Scroll smoothly to section
+  const scrollSmoth = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="sticky w-full top-0 z-10 p-4 bg-background/5 backdrop-blur-md">
       <div className="flex justify-between w-full max-w-7xl mx-auto">
@@ -13,32 +23,34 @@ export default function Header() {
           <span className="font-bold tracking-tight">SITCOLS.</span>
         </article>
         <nav className="hidden md:flex justify-between items-center max-w-sm w-full">
-          <a
-            href="#"
+          <p
+            onClick={() => scrollSmoth("inicio")}
             className="hover:underline underline-offset-4 transition-all"
           >
             Inicio
-          </a>
-          <a
-            href="#"
+          </p>
+          <p
+            onClick={() => scrollSmoth("servicios")}
             className="hover:underline underline-offset-4 transition-all"
           >
             Servicios
-          </a>
-          <a
-            href="#"
+          </p>
+          <p
+            onClick={() => scrollSmoth("planes")}
             className="hover:underline underline-offset-4 transition-all"
           >
             Planes
-          </a>
-          <a
-            href="#"
+          </p>
+          <p
+            onClick={() => scrollSmoth("portafolio")}
             className="hover:underline underline-offset-4 transition-all"
           >
-            Nosotros
-          </a>
+            Portafolio
+          </p>
         </nav>
-        <button className="btn-primary">Contactanos</button>
+        <button onClick={() => scrollSmoth("contacto")} className="btn-primary">
+          Contactanos
+        </button>
       </div>
     </header>
   );

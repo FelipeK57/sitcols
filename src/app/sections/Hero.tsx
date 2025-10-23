@@ -33,7 +33,7 @@ export default function Hero() {
 
   return (
     <>
-      <section className="grid place-content-center py-36 px-4 gap-6">
+      <section id="inicio" className="grid place-content-center py-36 px-4 gap-6">
         <h1 className="text-5xl font-bold text-center leading-tight">
           El Software del mañana hecho para ti hoy
         </h1>
