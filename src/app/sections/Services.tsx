@@ -142,7 +142,7 @@ const webDevelopmentServices = [
     title: "Aplicaciones web a medida",
     description:
       "Soluciones personalizadas adaptadas a las necesidades específicas de tu negocio.",
-    minPrice: "Variable según requerimientos",
+    minPrice: "Desde $5.000.000",
     estimatedTime: "Variable según requerimientos",
   },
 ];
@@ -387,11 +387,11 @@ export default function Services() {
           </AnimatePresence>
         </div>
         {selectedServiceWithoutPlan === "Desarrollo web" ? (
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
             {webDevelopmentServices.map((service, index) => (
               <article
                 key={index}
-                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-4"
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-4 hover:shadow-2xl transition-all hover:shadow-primary/30"
               >
                 <p className="text-primary">{service.icon}</p>
                 <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
@@ -409,11 +409,11 @@ export default function Services() {
             ))}
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
             {designServices.map((service, index) => (
               <article
                 key={index}
-                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-4"
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-4 hover:shadow-2xl transition-all hover:shadow-primary/30"
               >
                 <p className="text-primary">{service.icon}</p>
                 <h3 className="font-semibold text-lg">{service.title}</h3>
