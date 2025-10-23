@@ -88,8 +88,53 @@ const services = [
     ],
   },
 ];
+const webDevelopmentServices = [
+  {
+    title: "Landing pages",
+    description:
+      "Páginas web diseñadas para captar la atención y convertir visitantes en clientes.",
+  },
+  {
+    title: "Sistemas CRM",
+    description:
+      "Plataformas personalizadas para gestionar relaciones con clientes y recursos empresariales.",
+  },
+  {
+    title: "Sistemas ERP",
+    description:
+      "Soluciones integrales para la gestión de procesos empresariales y recursos internos.",
+  },
+  {
+    title: "E-commerce",
+    description:
+      "Tiendas online optimizadas para ofrecer una experiencia de compra fluida y segura.",
+  },
+  {
+    title: "Sistemas de reservas",
+    description:
+      "Plataformas para gestionar reservas y citas de manera eficiente.",
+  },
+  {
+    title: "Aplicaciones web a medida",
+    description:
+      "Soluciones personalizadas adaptadas a las necesidades específicas de tu negocio.",
+  },
+];
+const designServices = [
+  {
+    title: "Diseño UI/UX básico",
+    description:
+      "Diseño de interfaces simples para landing pages o aplicaciones con funcionalidades limitadas.",
+  },
+  {
+    title: "Diseño UI/UX avanzado",
+    description:
+      "Diseño completo de interfaces para aplicaciones complejas con múltiples funcionalidades e interacciones.",
+  }
+];
 
 const servicesWithPlans = ["Infraestructura", "Mantenimiento"];
+const serviceWithoutPlans = ["Diseño", "Desarrollo web"];
 
 const pricingPlans = [
   {
@@ -166,7 +211,11 @@ export default function Services() {
   const [selectedServicePlan, setSelectedServicePlan] = useState<string | null>(
     "Infraestructura"
   );
+  const [selectedServiceWithoutPlan, setSelectedServiceWithoutPlan] = useState<
+    string | null
+  >("Desarrollo web");
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const [isSelectServiceOpen, setIsSelectServiceOpen] = useState(false);
 
   return (
     <>
@@ -246,6 +295,79 @@ export default function Services() {
             </motion.div>
           )}
         </AnimatePresence>
+      </section>
+      <section className="w-full max-w-6xl mx-auto py-16 px-4 space-y-6">
+        <h2 className="font-semibold tracking-tight text-2xl text-center">
+          Soluciones a medida
+        </h2>
+        <div className="relative space-y-2 w-fit mx-auto">
+          <div
+            onClick={() => setIsSelectServiceOpen(!isSelectServiceOpen)}
+            className="flex justify-between px-4 py-2 rounded-2xl mx-auto w-full min-w-64 bg-neutral-900 border border-neutral-800 text-neutral-400 cursor-pointer"
+          >
+            <div className="flex justify-between items-center w-full">
+              <span className="select-none">
+                {selectedServiceWithoutPlan === null
+                  ? "Selecciona un servicio"
+                  : `${selectedServiceWithoutPlan}`}
+              </span>
+              <ChevronDown
+                className={`${
+                  isSelectServiceOpen ? "" : "rotate-90"
+                } transition-all size-4`}
+              />
+            </div>
+          </div>
+          <AnimatePresence>
+            {isSelectServiceOpen && (
+              <motion.div
+                initial={{ y: -10, opacity: 0, scale: 0.95 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                exit={{ y: -10, opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.1 }}
+                className="absolute z-10 bg-neutral-900 border border-neutral-800 rounded-2xl min-w-64 mx-auto w-full"
+              >
+                {serviceWithoutPlans.map((service, index) => (
+                  <div
+                    key={index}
+                    onClick={() => {
+                      setSelectedServiceWithoutPlan(service);
+                      setIsSelectServiceOpen(false);
+                    }}
+                    className="px-4 py-2 hover:bg-neutral-800 rounded-2xl cursor-pointer"
+                  >
+                    {service}
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        {selectedServiceWithoutPlan === "Desarrollo web" ? (
+          <div className="grid md:grid-cols-2 gap-4">
+            {webDevelopmentServices.map((service, index) => (
+              <article
+                key={index}
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl"
+              >
+                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                <p className="text-neutral-400">{service.description}</p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-4">
+            {designServices.map((service, index) => (
+              <article
+                key={index}
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl"
+              >
+                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                <p className="text-neutral-400">{service.description}</p>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
       <section className="w-full max-w-6xl mx-auto py-16 px-4 space-y-6">
         <h2 className="font-semibold tracking-tight text-2xl text-center">
@@ -339,82 +461,3 @@ export default function Services() {
     </>
   );
 }
-
-// {
-//       title: "Diseño",
-//       plan: [
-//         {
-//           name: "Starter",
-//           price: "$100",
-//           features: ["Wireframes básicos", "Guía de estilo básica"],
-//         },
-//         {
-//           name: "Premium",
-//           price: "$200",
-//           features: [
-//             "Diseño UI/UX completo",
-//             "Prototipo navegable",
-//             "Guía de estilo avanzada",
-//           ],
-//         },
-//         {
-//           name: "Enterprise",
-//           price: "Cotizar",
-//           features: [
-//             "Diseño a medida para grandes proyectos",
-//             "Investigación de usuarios incluida",
-//             "Soporte prioritario",
-//           ],
-//         },
-//       ],
-//     },
-//     {
-//       title: "Desarrollo web",
-//       plan: [
-//         {
-//           name: "Landing Page",
-//           price: "$500",
-//           features: [
-//             "Diseño responsivo",
-//             "Integración básica",
-//             "Despliegue en hosting",
-//           ],
-//         },
-//         {
-//           name: "CRM/ERP básico",
-//           price: "$600",
-//           features: [
-//             "Gestión de clientes/productos",
-//             "Panel administrativo",
-//             "Autenticación de usuarios",
-//           ],
-//         },
-//         {
-//           name: "E-commerce",
-//           price: "$800",
-//           features: [
-//             "Catálogo de productos",
-//             "Carrito de compras",
-//             "Pasarela de pago integrada",
-//           ],
-//         },
-//         {
-//           name: "Booking System",
-//           price: "$700",
-//           features: [
-//             "Gestión de reservas",
-//             "Notificaciones automáticas",
-//             "Panel administrativo",
-//           ],
-//         },
-//         {
-//           name: "ERP a la medida",
-//           price: "Cotizar",
-//           features: [
-//             "Solución integral adaptada a tu negocio",
-//             "Módulos personalizados",
-//             "Soporte y mantenimiento dedicado",
-//           ],
-//         },
-//       ],
-//     },

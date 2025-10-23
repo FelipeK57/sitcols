@@ -46,7 +46,7 @@ export default function Hero() {
             Ver proyectos
           </button>
           <button className="btn-primary">
-            Contáctanos
+            Solicitar llamada
           </button>
         </div>
       </section>

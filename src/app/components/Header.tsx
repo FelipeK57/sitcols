@@ -29,7 +29,7 @@ export default function Header() {
             href="#"
             className="hover:underline underline-offset-4 transition-all"
           >
-            Proyectos
+            Planes
           </a>
           <a
             href="#"
@@ -38,9 +38,7 @@ export default function Header() {
             Nosotros
           </a>
         </nav>
-        <button className="btn-primary">
-          Solicitar llamada
-        </button>
+        <button className="btn-primary">Contactanos</button>
       </div>
     </header>
   );
