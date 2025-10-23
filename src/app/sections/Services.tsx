@@ -2,12 +2,20 @@
 
 import { useState } from "react";
 import {
+  Calendar,
   CheckCircle,
   ChevronDown,
   Cloud,
   Code,
+  Folders,
+  Laptop,
+  NotebookPen,
   Palette,
+  PencilRuler,
   Settings,
+  ShoppingCart,
+  TrendingUp,
+  Users2,
 } from "lucide-react";
 import ServiceCard from "../components/ServiceCard";
 import { motion, AnimatePresence } from "motion/react";
@@ -90,6 +98,7 @@ const services = [
 ];
 const webDevelopmentServices = [
   {
+    icon: <TrendingUp className="size-12" />,
     title: "Landing pages",
     description:
       "Páginas web diseñadas para captar la atención y convertir visitantes en clientes.",
@@ -97,6 +106,7 @@ const webDevelopmentServices = [
     estimatedTime: "2-4 semanas",
   },
   {
+    icon: <Users2 className="size-12" />,
     title: "Sistemas CRM",
     description:
       "Plataformas personalizadas para gestionar relaciones con clientes y recursos empresariales.",
@@ -104,6 +114,7 @@ const webDevelopmentServices = [
     estimatedTime: "4-6 semanas",
   },
   {
+    icon: <ShoppingCart className="size-12" />,
     title: "E-commerce",
     description:
       "Tiendas online optimizadas para ofrecer una experiencia de compra fluida y segura.",
@@ -111,6 +122,7 @@ const webDevelopmentServices = [
     estimatedTime: "6-8 semanas",
   },
   {
+    icon: <Calendar className="size-12" />,
     title: "Sistemas de reservas",
     description:
       "Plataformas para gestionar reservas y citas de manera eficiente.",
@@ -118,6 +130,7 @@ const webDevelopmentServices = [
     estimatedTime: "8-10 semanas",
   },
   {
+    icon: <Folders className="size-12" />,
     title: "Sistemas ERP",
     description:
       "Soluciones integrales para la gestión de procesos empresariales y recursos internos.",
@@ -125,15 +138,17 @@ const webDevelopmentServices = [
     estimatedTime: "10-12 semanas",
   },
   {
+    icon: <PencilRuler className="size-12" />,
     title: "Aplicaciones web a medida",
     description:
       "Soluciones personalizadas adaptadas a las necesidades específicas de tu negocio.",
-    minPrice: "Desde $5.000.000",
+    minPrice: "Variable según requerimientos",
     estimatedTime: "Variable según requerimientos",
   },
 ];
 const designServices = [
   {
+    icon: <NotebookPen className="size-12" />,
     title: "Diseño UI/UX básico",
     description:
       "Diseño de interfaces simples para landing pages o aplicaciones con funcionalidades limitadas.",
@@ -141,6 +156,7 @@ const designServices = [
     estimatedTime: "2-3 semanas",
   },
   {
+    icon: <Laptop className="size-12" />,
     title: "Diseño UI/UX avanzado",
     description:
       "Diseño completo de interfaces para aplicaciones complejas con múltiples funcionalidades e interacciones.",
@@ -375,8 +391,9 @@ export default function Services() {
             {webDevelopmentServices.map((service, index) => (
               <article
                 key={index}
-                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-2"
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-4"
               >
+                <p className="text-primary">{service.icon}</p>
                 <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
                 <p className="text-neutral-400">{service.description}</p>
                 <p className="text-lg font-semibold">
@@ -396,8 +413,9 @@ export default function Services() {
             {designServices.map((service, index) => (
               <article
                 key={index}
-                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-2"
+                className="p-6 bg-neutral-900 border border-neutral-800 rounded-2xl space-y-4"
               >
+                <p className="text-primary">{service.icon}</p>
                 <h3 className="font-semibold text-lg">{service.title}</h3>
                 <p className="text-neutral-400">{service.description}</p>
                 <p className="text-lg font-semibold">
