@@ -142,7 +142,7 @@ const webDevelopmentServices = [
     title: "Aplicaciones web a medida",
     description:
       "Soluciones personalizadas adaptadas a las necesidades específicas de tu negocio.",
-    minPrice: "Desde $5.000.000",
+    minPrice: "$5.000.000",
     estimatedTime: "Variable según requerimientos",
   },
 ];
