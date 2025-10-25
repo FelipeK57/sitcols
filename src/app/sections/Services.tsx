@@ -440,7 +440,7 @@ export default function Services() {
         id="planes"
         className="w-full max-w-6xl mx-auto py-20 px-4 space-y-6"
       >
-        <h2 className="font-semibold tracking-tight text-2xl text-center">
+        <h2 className="font-semibold tracking-tight text-4xl text-center">
           Planes y precios
         </h2>
         <p className="text-center max-w-xl mx-auto text-neutral-400">

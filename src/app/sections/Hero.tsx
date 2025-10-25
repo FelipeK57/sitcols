@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { scrollSmoth } from "../utils/scrollSmoth";
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -42,8 +43,8 @@ export default function Hero() {
           para tu negocio.
         </p>
         <div className="flex justify-center w-fit mx-auto gap-4">
-          <button className="btn-secondary">
-            Ver proyectos
+          <button onClick={() => scrollSmoth("portafolio")} className="btn-secondary">
+            Ver portafolio
           </button>
           <button className="btn-primary">
             Solicitar llamada

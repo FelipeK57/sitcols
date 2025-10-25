@@ -1,14 +1,7 @@
 "use client";
 import Image from "next/image";
+import { scrollSmoth } from "../utils/scrollSmoth";
 export default function Header() {
-  // Scroll smoothly to section
-  const scrollSmoth = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <header className="sticky w-full top-0 z-10 p-4 bg-background/5 backdrop-blur-md">
       <div className="flex justify-between w-full max-w-7xl mx-auto">
