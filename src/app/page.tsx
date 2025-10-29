@@ -3,6 +3,7 @@ import Hero from "./sections/Hero";
 import Services from "./sections/Services";
 import Footer from "./components/Footer";
 import Projects from "./sections/Projects";
+import Contact from "./sections/Contact";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Projects />
+      <Contact />
       <Footer />
     </main>
   );

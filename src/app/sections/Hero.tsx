@@ -46,7 +46,7 @@ export default function Hero() {
           <button onClick={() => scrollSmoth("portafolio")} className="btn-secondary">
             Ver portafolio
           </button>
-          <button className="btn-primary">
+          <button onClick={() => scrollSmoth("contacto")} className="btn-primary">
             Solicitar llamada
           </button>
         </div>
