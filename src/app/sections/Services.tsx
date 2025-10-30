@@ -349,7 +349,7 @@ export default function Services() {
             className="flex justify-between px-4 py-2 rounded-2xl mx-auto w-full min-w-64 bg-neutral-900 border border-neutral-800 text-neutral-400 cursor-pointer"
           >
             <div className="flex justify-between items-center w-full">
-              <span className="select-none">
+              <span className="select-none text-white">
                 {selectedServiceWithoutPlan === null
                   ? "Selecciona un servicio"
                   : `${selectedServiceWithoutPlan}`}
@@ -453,7 +453,7 @@ export default function Services() {
             className="flex justify-between px-4 py-2 rounded-2xl mx-auto w-full min-w-64 bg-neutral-900 border border-neutral-800 text-neutral-400 cursor-pointer"
           >
             <div className="flex justify-between items-center w-full">
-              <span className="select-none">
+              <span className="select-none text-white">
                 {selectedServicePlan === null
                   ? "Selecciona un servicio"
                   : `${selectedServicePlan}`}

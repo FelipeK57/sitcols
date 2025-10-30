@@ -47,7 +47,7 @@ export default function Contact() {
               <span className="select-none">
                 {reasonSelected === null
                   ? "Selecciona el motivo"
-                  : `${reasonSelected}`}
+                  : <span className="text-white">{reasonSelected}</span>}
               </span>
               <ChevronDown
                 className={`${
