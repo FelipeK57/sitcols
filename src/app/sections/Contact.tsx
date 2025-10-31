@@ -1,10 +1,14 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { Check, ChevronDown, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 export default function Contact() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [success, setSuccess] = useState<boolean>(false);
+
   const reasonsForContact = [
     "Cotización de producto",
     "Contratar paquete",
@@ -13,6 +17,51 @@ export default function Contact() {
     "Propuesta de colaboración",
     "Otros",
   ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      reason: reasonSelected,
+      message: formData.get("message"),
+      phone: formData.get("phone"),
+    };
+
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSuccess(true);
+        setModalOpen(true);
+        setTimeout(() => {
+          setModalOpen(false);
+        }, 5000);
+        setIsLoading(false);
+        form.reset();
+      } else {
+        setSuccess(false);
+        setModalOpen(true);
+        setTimeout(() => {
+          setModalOpen(false);
+        }, 5000);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error al enviar el mensaje");
+    }
+  };
 
   const [reasonSelected, setReasonSelected] = useState<string | null>(null);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -25,16 +74,25 @@ export default function Contact() {
         ¿Tienes alguna pregunta o quieres trabajar con nosotros? Envíanos un
         mensaje y nos pondremos en contacto contigo lo antes posible.
       </p>
-      <form className="max-w-lg mx-auto w-full space-y-6">
+      <form
+        onSubmit={(e) => handleSubmit(e)}
+        className="max-w-lg mx-auto w-full space-y-6"
+      >
         <input
+          name="name"
+          required
           placeholder="Nombre"
           className="border w-full px-4 py-2 rounded-2xl border-neutral-800 bg-neutral-900 focus:outline-1 focus:outline-primary"
         />
         <input
+          name="email"
+          required
           placeholder="Correo electrónico"
           className="border w-full px-4 py-2 rounded-2xl border-neutral-800 bg-neutral-900 focus:outline-1 focus:outline-primary"
         />
         <input
+          name="phone"
+          required
           placeholder="Celular"
           className="border w-full px-4 py-2 rounded-2xl border-neutral-800 bg-neutral-900 focus:outline-1 focus:outline-primary"
         />
@@ -45,9 +103,11 @@ export default function Contact() {
           >
             <div className="flex justify-between items-center w-full">
               <span className="select-none">
-                {reasonSelected === null
-                  ? "Selecciona el motivo"
-                  : <span className="text-white">{reasonSelected}</span>}
+                {reasonSelected === null ? (
+                  "Selecciona el motivo"
+                ) : (
+                  <span className="text-white">{reasonSelected}</span>
+                )}
               </span>
               <ChevronDown
                 className={`${
@@ -82,13 +142,53 @@ export default function Contact() {
           </AnimatePresence>
         </div>
         <textarea
+          name="message"
+          required
           placeholder="Mensaje"
           className="border w-full px-4 py-2 rounded-2xl border-neutral-800 bg-neutral-900 focus:outline-1 focus:outline-primary h-32 resize-none"
         />
-        <button className="w-full btn-primary py-3 rounded-2xl">
-          Enviar Mensaje
+        <button
+          type="submit"
+          disabled={isLoading ? true : false}
+          className="w-full btn-primary py-3 rounded-2xl"
+        >
+          {isLoading ? "Enviando..." : "Enviar mensaje"}
         </button>
       </form>
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="fixed inset-0 z-10 bg-neutral-900/70 flex items-center justify-center overflow-hidden"
+          >
+            <div className="bg-neutral-900 border border-neutral-800 p-6 rounded-2xl max-w-sm text-center">
+              <div className="flex items-center justify-center w-full">
+                {success ? (
+                  <Check className="text-green-600 size-18" />
+                ) : (
+                  <X className="text-rose-500 size-18" />
+                )}
+              </div>
+              <h3 className="text-2xl font-semibold mb-4">
+                {success ? "¡Mensaje enviado!" : "Error al enviar el mensaje"}
+              </h3>
+              <p className="text-neutral-400 text-sm">
+                {success
+                  ? "Gracias por contactarnos. Nos pondremos en contacto contigo pronto."
+                  : "Hubo un problema al enviar tu mensaje. Por favor, intenta nuevamente."}
+              </p>
+              <button
+                onClick={() => setModalOpen(false)}
+                className="mt-4 btn-primary py-2 px-4 rounded-2xl"
+              >
+                Cerrar
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
